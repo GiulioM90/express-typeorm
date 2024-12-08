@@ -1,6 +1,5 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
-import { User } from "./entity/User"
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -9,9 +8,10 @@ export const AppDataSource = new DataSource({
     username: "root",
     password: "",
     database: "express_orm",
-    synchronize: true, // to disable in prod
+    synchronize: false, // to disable in prod
     logging: true,
-    entities: [User],
-    migrations: [],
+    entities:  ["entity/*.ts"],
+    migrations: ["build/migration/*.js"],
+    migrationsTableName: "custom_migration_table", // specify if you need a name different from 'migrations'
     subscribers: [], 
-  });
+});

@@ -1,6 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { 
+    Entity, PrimaryGeneratedColumn, Column, 
+    CreateDateColumn,UpdateDateColumn, VersionColumn,
+    DeleteDateColumn
+} from "typeorm"
 
-@Entity()
+@Entity("my_users")
 export class User {
 
     @PrimaryGeneratedColumn()
@@ -15,4 +19,14 @@ export class User {
     @Column()
     age: number
 
+    @CreateDateColumn()
+    createdAt: string
+    
+    @UpdateDateColumn()
+    updatedAt: string
+
+    @VersionColumn()
+
+    @DeleteDateColumn()
+    deletedAt: string
 }
