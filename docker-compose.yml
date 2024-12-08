@@ -1,0 +1,13 @@
+
+services:
+  test-db:
+    image: mysql:8.0
+    container_name: express-orm # Nome personalizzato del container
+    ports:
+      - "127.0.0.1:3306:3306" 
+    volumes:
+      - ./tmp/mysql:/var/lib/mysql
+      - ./docker-images/mysql/conf/:/etc/mysql/conf.d/
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "1"
+      MYSQL_DATABASE: "express_orm" # Nome del database iniziale
