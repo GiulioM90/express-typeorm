@@ -1,6 +1,7 @@
 # Api Project Build with Express and TypeORM
 
 - Node version: 20 
+- Install globally typeorm with `npm i type orm -g`
 - initializated with `typeorm init --express --name typeorm-express-sample --database mysql`
 
 Steps to run this project:
