@@ -21,3 +21,7 @@ docker compose down
 
 - to create a Migration: `typeorm migration:create ./src/migration/initMigrations` 
 - to run a Migration: check first the buid with `npx tsc`, the path in the data-source.ts and after `npx typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts` 
+
+## Tesing routes
+
+- GET: `http://localhost:8080/users`
