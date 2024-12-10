@@ -10,7 +10,12 @@ AppDataSource.initialize().then(async () => {
     // create express app
     const app = express()
     app.use(bodyParser.json())
-
+    
+    app.use((err: Error, req: Request, res: Response, next: Function) => {
+        console.error(err.stack);
+        res.status(500).json({ message: "Internal server error" });
+    });
+    
     // register express routes from defined application routes
     Routes.forEach(route => {
         (app as any)[route.method](route.route, (req: Request, res: Response, next: Function) => {
