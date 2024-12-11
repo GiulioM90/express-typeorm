@@ -8,8 +8,8 @@ Steps to run locally this project:
 
 ## first docker to launch test-db and prepare 
 
-docker-compose up -d
-docker compose down 
+- To launch `docker-compose up -d`
+- To Stop `docker compose down` 
 
 ## Install dependencies
 
@@ -19,8 +19,8 @@ docker compose down
 
 # Migrations
 
-- to create a Migration: `typeorm migration:create ./src/migration/initMigrations` 
-- to run a Migration: check first the buid with `npx tsc`, the path in the data-source.ts and after `npx typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts` 
+- To create a Migration: `typeorm migration:create ./src/migration/initMigrations` 
+- To run a Migration: check first the buid with `npm run build`, the path in the data-source.ts and after `npm run migrate` 
 
 ## Tesing routes
 

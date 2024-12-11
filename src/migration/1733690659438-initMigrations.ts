@@ -17,10 +17,28 @@ export class InitMigrations1733690659438 implements MigrationInterface {
                         name: "id",
                         type: "int",
                         isPrimary: true,
+                        isGenerated: true, 
+                        generationStrategy: "increment", 
                     },
                     {
                         name: "name",
                         type: "varchar",
+                    },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "CURRENT_TIMESTAMP",
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "CURRENT_TIMESTAMP",
+                        onUpdate: "CURRENT_TIMESTAMP", 
+                    },
+                    {
+                        name: "deleted_at",
+                        type: "timestamp",
+                        isNullable: true, 
                     },
                 ],
             }),
@@ -43,6 +61,8 @@ export class InitMigrations1733690659438 implements MigrationInterface {
                         name: "id",
                         type: "int",
                         isPrimary: true,
+                        isGenerated: true, 
+                        generationStrategy: "increment", 
                     },
                     {
                         name: "name",
@@ -51,7 +71,18 @@ export class InitMigrations1733690659438 implements MigrationInterface {
                     {
                         name: "created_at",
                         type: "timestamp",
-                        default: "now()",
+                        default: "CURRENT_TIMESTAMP",
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "CURRENT_TIMESTAMP",
+                        onUpdate: "CURRENT_TIMESTAMP", 
+                    },
+                    {
+                        name: "deleted_at",
+                        type: "timestamp",
+                        isNullable: true, 
                     },
                 ],
             }),

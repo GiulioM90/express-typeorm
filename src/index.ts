@@ -4,6 +4,7 @@ import { Request, Response } from "express"
 import { AppDataSource } from "./data-source"
 import { Routes } from "./routes"
 import { User } from "./entity/User"
+import { Question } from "./entity/Question"
 
 AppDataSource.initialize().then(async () => {
 
@@ -36,19 +37,25 @@ AppDataSource.initialize().then(async () => {
     app.listen(8080)
 
     // insert new users for test
-    await AppDataSource.manager.save(
-        AppDataSource.manager.create(User, {
-            firstName: "Timber",
-            lastName: "Saw",
-            age: 27
-        })
-    )
+    // await AppDataSource.manager.save(
+    //     AppDataSource.manager.create(User, {
+    //         firstName: "Timber",
+    //         lastName: "Saw",
+    //         age: 27
+    //     })
+    // )
+
+    // await AppDataSource.manager.save(
+    //     AppDataSource.manager.create(User, {
+    //         firstName: "Phantom",
+    //         lastName: "Assassin",
+    //         age: 24
+    //     })
+    // )
 
     await AppDataSource.manager.save(
-        AppDataSource.manager.create(User, {
-            firstName: "Phantom",
-            lastName: "Assassin",
-            age: 24
+        AppDataSource.manager.create(Question, {
+            name: "Test name",
         })
     )
 
