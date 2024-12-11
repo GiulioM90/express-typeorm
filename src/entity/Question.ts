@@ -32,6 +32,5 @@ export class Question {
       joinColumn: { name: 'question_id', referencedColumnName: 'id' },
       inverseJoinColumn: { name: 'user_id', referencedColumnName: 'id' }
     })
-
     users: User[];
 }

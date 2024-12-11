@@ -3,8 +3,7 @@ import * as bodyParser from "body-parser"
 import { Request, Response } from "express"
 import { AppDataSource } from "./data-source"
 import { Routes } from "./routes"
-import { User } from "./entity/User"
-import { Question } from "./entity/Question"
+import { testCreateData } from "./utils/testCreate"
 
 AppDataSource.initialize().then(async () => {
 
@@ -35,30 +34,7 @@ AppDataSource.initialize().then(async () => {
 
     // start express server
     app.listen(8080)
-
-    // insert new users for test
-    // await AppDataSource.manager.save(
-    //     AppDataSource.manager.create(User, {
-    //         firstName: "Timber",
-    //         lastName: "Saw",
-    //         age: 27
-    //     })
-    // )
-
-    // await AppDataSource.manager.save(
-    //     AppDataSource.manager.create(User, {
-    //         firstName: "Phantom",
-    //         lastName: "Assassin",
-    //         age: 24
-    //     })
-    // )
-
-    await AppDataSource.manager.save(
-        AppDataSource.manager.create(Question, {
-            name: "Test name",
-        })
-    )
-
+    // testCreateData() // for testing create after first migrations 
     console.log("Express server has started on port 8080. Open http://localhost:8080/users to see results")
 
 }).catch(error => console.log(error))
