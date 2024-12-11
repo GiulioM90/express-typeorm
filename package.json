@@ -19,6 +19,7 @@
       "start": "ts-node src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs",
       "build": "npx tsc",
-      "migrate" :"npx typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts"
+      "migrate" :"npx typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts",
+      "rollback" :"npx typeorm-ts-node-commonjs migration:revert -d ./src/data-source.ts"
    }
 }

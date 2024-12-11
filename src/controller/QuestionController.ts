@@ -1,6 +1,8 @@
 import { AppDataSource } from "../data-source"
 import { NextFunction, Request, Response } from "express"
 import { Question } from "../entity/Question"
+import { User } from "../entity/User"
+import { In } from "typeorm"
 
 export class QuestionController {
 
@@ -31,16 +33,25 @@ export class QuestionController {
     
     async save(request: Request, response: Response, next: NextFunction) {
         try {
-            const { name } = request.body;
-            const question = Object.assign(new Question(), { name });
-            console.log(question)
+            const { name, users } = request.body;
+    
+            // Recupera gli utenti dal database utilizzando gli ID forniti
+            const userRepository = AppDataSource.getRepository(User);
+            const userEntities = await userRepository.findBy({ id: In(users) });
+    
+            if (userEntities.length === 0) {
+                return response.status(400).json({ error: "Invalid user IDs provided" });
+            }
+    
+            // Crea la domanda e assegna le relazioni
+            const question = Object.assign(new Question(), { name, users: userEntities });
             const savedQuestion = await this.questionRepository.save(question);
     
             response.status(201).json(savedQuestion); // Risposta 201 Created
         } catch (error) {
             next(error);
         }
-    }
+    }    
     
     async remove(request: Request, response: Response, next: NextFunction) {
         try {

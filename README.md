@@ -21,7 +21,9 @@ Steps to run locally this project:
 
 - To create a Migration: `typeorm migration:create ./src/migration/initMigrations` 
 - To run a Migration: check first the buid with `npm run build`, the path in the data-source.ts and after `npm run migrate` 
+- To run a Rollback: `npm run rollback`
 
 ## Tesing routes
 
 - GET: `http://localhost:8080/users`
+- `curl --location 'http://localhost:8080/questions' --header 'Content-Type: application/json' --data '{ "name": "test","users":[1,2,3]}'`
