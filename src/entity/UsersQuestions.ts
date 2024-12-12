@@ -25,7 +25,7 @@ class UsersQuestions {
 
   @ManyToMany(() => Question, question => question.users)
   @JoinColumn({ name: 'question_id' })
-  customer: Question;
+  question: Question;
 }
 
 export default UsersQuestions;
